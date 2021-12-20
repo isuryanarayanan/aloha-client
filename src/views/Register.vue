@@ -171,7 +171,6 @@ export default {
 .container {
   height: 100%;
   display: flex;
-  width: 600px;
   justify-content: center;
   align-items: center;
 }
