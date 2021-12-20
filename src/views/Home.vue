@@ -95,42 +95,61 @@ export default {
       </div>
     </div>
 
-    <footer class="w-100 contact-footer py-4 flex-shrink-0">
-        <div class="row text-center">
-          <div class="col-sm-4">
-            <h5 class="h1 brand text-dark">Surya</h5>
-            <p class="small text-muted">
-              Surya Narayanan<br />
-              a.suryanarayanan2000@gmail.com
-            </p>
-            <p class="small text-muted mb-0">
-              &copy; Developer.
-              <a class="text-primary" href="https://github.com/isuryanarayanan"
-                >isuryanarayanan@github.com</a
-              >
-            </p>
+    <footer class="w-100 contact-footer flex-shrink-0">
+      <div class="row text-center pb-5">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 row text-center">
+          <div class="rounded-link col-4 m-auto">
+            <a href="https://www.instagram.com/cseasiet"
+              ><i class="fa fa-instagram" aria-hidden="true"></i
+            ></a>
           </div>
-          <div class="col-sm-4">
-            <h5 class="h1 brand text-dark">Sidharth</h5>
-            <p class="small text-muted">
-              K Sidharth <br />
-							+91 89211 46719
-            </p>
-            <p class="small text-muted mb-0">
-              @ Event Organizer 
-            </p>
+          <div class="rounded-link col-4 m-auto">
+            <a href="https://www.linkedin.com/company/department-of-cse-asiet"
+              ><i class="fa fa-linkedin" aria-hidden="true"></i
+            ></a>
           </div>
-          <div class="col-sm-4">
-            <h5 class="h1 brand text-dark">Fayis</h5>
-            <p class="small text-muted">
-              Mohammed Fayis E<br />
-            	+91 96453 15315
-            </p>
-            <p class="small text-muted mb-0">
-             	@ Event Organizer 
-            </p>
+          <div class="rounded-link col-4 m-auto">
+            <a href="https://www.facebook.com/CSEASIET"
+              ><i class="fa fa-facebook" aria-hidden="true"></i
+            ></a>
           </div>
         </div>
+        <div class="col-sm-4"></div>
+      </div>
+      <div class="row text-center pt-5">
+        <div class="col-sm-4">
+          <h5 class="h1 brand text-dark">Sidharth</h5>
+          <p class="small text-muted">
+            K Sidharth <br />
+            +91 89211 46719
+          </p>
+          <p class="small text-muted mb-0">@ Event Organizer</p>
+          <hr />
+        </div>
+        <div class="col-sm-4">
+          <h5 class="h1 brand text-dark">Fayis</h5>
+          <p class="small text-muted">
+            Mohammed Fayis E<br />
+            +91 96453 15315
+          </p>
+          <p class="small text-muted mb-0">@ Event Organizer</p>
+          <hr />
+        </div>
+        <div class="col-sm-4">
+          <h5 class="h1 brand text-dark">Surya</h5>
+          <p class="small text-muted">
+            Surya Narayanan<br />
+            a.suryanarayanan2000@gmail.com
+          </p>
+          <p class="small text-muted mb-0">
+            <a class="text-primary" href="https://github.com/isuryanarayanan"
+              >@ Developer</a
+            >
+          </p>
+          <hr />
+        </div>
+      </div>
     </footer>
   </div>
 </template>
@@ -138,6 +157,18 @@ export default {
 <style scoped>
 .contact-footer {
   margin-top: 100px;
+}
+.rounded-link {
+  background: #222;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+.rounded-link a {
+  color: white;
 }
 .container {
   height: 100%;
@@ -157,6 +188,6 @@ export default {
 }
 
 .brand-small {
-  font-size: 16px;
+  font-size: 14px;
 }
 </style>
