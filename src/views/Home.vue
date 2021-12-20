@@ -80,7 +80,7 @@ export default {
           <h3 class="brand">{{ event.name }}</h3>
         </div>
         <hr />
-        <p class="brand-2 text-center">
+        <p class="brand-2 brand-small text-center">
           {{ event.description }}
           <br />
           <br />
@@ -94,10 +94,51 @@ export default {
         </p>
       </div>
     </div>
+
+    <footer class="w-100 contact-footer py-4 flex-shrink-0">
+        <div class="row text-center">
+          <div class="col-sm-4">
+            <h5 class="h1 brand text-dark">Surya</h5>
+            <p class="small text-muted">
+              Surya Narayanan<br />
+              a.suryanarayanan2000@gmail.com
+            </p>
+            <p class="small text-muted mb-0">
+              &copy; Developer.
+              <a class="text-primary" href="https://github.com/isuryanarayanan"
+                >isuryanarayanan@github.com</a
+              >
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <h5 class="h1 brand text-dark">Sidharth</h5>
+            <p class="small text-muted">
+              K Sidharth <br />
+							+91 89211 46719
+            </p>
+            <p class="small text-muted mb-0">
+              @ Event Organizer 
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <h5 class="h1 brand text-dark">Fayis</h5>
+            <p class="small text-muted">
+              Mohammed Fayis E<br />
+            	+91 96453 15315
+            </p>
+            <p class="small text-muted mb-0">
+             	@ Event Organizer 
+            </p>
+          </div>
+        </div>
+    </footer>
   </div>
 </template>
 
 <style scoped>
+.contact-footer {
+  margin-top: 100px;
+}
 .container {
   height: 100%;
   display: flex;
