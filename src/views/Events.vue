@@ -12,7 +12,9 @@ export default {
   },
   methods: {
     copyLink: function (e) {
-      navigator.clipboard.writeText("https://aloha.herokuapp.com/register/" + e);
+      navigator.clipboard.writeText(
+        "https://aloha.herokuapp.com/register/" + e
+      );
       alert("Link Copied to ClipBoard");
     },
   },
@@ -32,26 +34,22 @@ export default {
       v-for="event in events"
       :key="event.id"
     >
-      <div class="brand p-2">
-        <h3>{{ event.name }}</h3>
+      <div class="p-2 text-center">
+        <h3 class="brand">{{ event.name }}</h3>
       </div>
       <hr />
-      <p class="brand-2">{{ event.description }}</p>
-      <div class="btns">
-        <div class="btn brand-2 btn-primary register-btn">
+      <p class="brand-2 text-center">
+        {{ event.description }}
+        <br />
+        <br />
+        <a class="btn brand-2 btn-primary register-btn">
           <router-link
             class="text-light"
             :to="{ name: 'Register', params: { id: event.id } }"
-            >Details</router-link
+            >Register</router-link
           >
-        </div>
-        <div
-          class="btn btn-success brand-2 register-btn mx-1"
-          @click="copyLink(event.id)"
-        >
-          Share
-        </div>
-      </div>
+        </a>
+      </p>
     </div>
   </div>
 </template>

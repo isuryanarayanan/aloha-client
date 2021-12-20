@@ -11,7 +11,9 @@ export default {
   },
   methods: {
     copyLink: function (e) {
-      navigator.clipboard.writeText("https://aloha.herokuapp.com/register/" + e);
+      navigator.clipboard.writeText(
+        "https://aloha.herokuapp.com/register/" + e
+      );
       alert("Link Copied to ClipBoard");
     },
   },
@@ -32,14 +34,17 @@ export default {
       <img class="image-banner" src="../assets/aloha-logo-little-1.png" />
     </div>
 
-    <div class="col-sm-12 card bg-transparent border-0 about  text-center">
+    <div class="col-sm-12 card bg-transparent border-0 about text-center">
       <div class="">
         <figure
           class="bg-dark p-3 rounded text-light"
-          style="border-right: 0.5rem solid #a34e78;border-left: 0.5rem solid #a34e78"
+          style="
+            border-right: 0.5rem solid #a34e78;
+            border-left: 0.5rem solid #a34e78;
+          "
         >
           <blockquote class="blockquote pb-2">
-            <p class="brand-2">
+            <p class="brand-2 brand-small">
               Aloha, a frosty, congenial fiesta organized by the CSE Department
               of Adi Shankara Institute of Engineering and Technology, Kalady is
               the much awaited one-day extravaganza of the year and is all set
@@ -57,7 +62,7 @@ export default {
             </p>
           </blockquote>
           <figcaption class="blockquote-footer mb-0 font-italic">
-					Team
+            Team
           </figcaption>
         </figure>
       </div>
@@ -65,28 +70,28 @@ export default {
     <div class="col-sm-12 card bg-transparent border-0 p-0">
       <h1 class="brand p-5">Events</h1>
     </div>
-    <div
-      class="col-sm-4 border py-2 bg-dark text-light"
-      v-for="event in events"
-      :key="event.id"
-    >
-      <div class="p-2">
-        <h3 class="brand">{{ event.name }}</h3>
-      </div>
-      <hr />
-      <p class="brand-2">{{ event.description }}</p>
-      <div class="btn brand-2 btn-primary register-btn">
-        <router-link
-          class="text-light"
-          :to="{ name: 'Register', params: { id: event.id } }"
-          >Details</router-link
-        >
-      </div>
+    <div class="col-sm-12 row m-auto">
       <div
-        class="btn btn-success brand-2 register-btn mx-1"
-        @click="copyLink(event.id)"
+        class="col-sm-4 border py-2 bg-dark text-light"
+        v-for="event in events"
+        :key="event.id"
       >
-        Share
+        <div class="p-2 text-center">
+          <h3 class="brand">{{ event.name }}</h3>
+        </div>
+        <hr />
+        <p class="brand-2 text-center">
+          {{ event.description }}
+          <br />
+          <br />
+          <a class="btn brand-2 btn-primary register-btn">
+            <router-link
+              class="text-light"
+              :to="{ name: 'Register', params: { id: event.id } }"
+              >Register here</router-link
+            >
+          </a>
+        </p>
       </div>
     </div>
   </div>
@@ -110,4 +115,7 @@ export default {
   margin-top: 5%;
 }
 
+.brand-small {
+  font-size: 16px;
+}
 </style>

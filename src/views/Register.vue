@@ -6,10 +6,10 @@ export default {
   data() {
     return {
       event: "",
-			phone_number:"",
-			semester:"",
-			batch:"",
-      asietId: "",
+      phone_number: "",
+      semester: "",
+      batch: "",
+      username: "",
       message: "",
       message_part: "",
     };
@@ -25,10 +25,7 @@ export default {
       this.message_part = part;
     },
     registerForEvent: async function () {
-      console.log(this.phone_number);
-      console.log(this.semester);
-      console.log(this.batch);
-			await this.handleClickSignIn();
+      await this.handleClickSignIn();
     },
     async handleClickSignIn() {
       try {
@@ -44,8 +41,9 @@ export default {
           .dispatch("LOGIN", {
             oauth_token: id_token,
             phone_number: this.phone_number,
-						semester:this.semester,
-						batch:this.batch,
+            semester: this.semester,
+            batch: this.batch,
+						username:this.username,
             event_id: this.event.id,
           })
           .then((e) => {
@@ -53,7 +51,7 @@ export default {
               this.renderMessage(
                 "Success",
                 "Registered as " +
-                  this.phone_number+
+                  this.phone_number +
                   "@" +
                   googleUser.getBasicProfile().getEmail()
               );
@@ -84,11 +82,22 @@ export default {
       <div class="card bg-transparent border-0">
         <h5 class="card-header display-4 brand">{{ event.name }}</h5>
         <div class="card-body">
-          <h5 class="card-title">{{ event.timing }}</h5>
+          <h5 class="card-title">Time: {{ event.timing }} | venue: {{event.venue}}</h5>
           <p class="card-text">{{ event.description }}</p>
 
-          <div class="row">
-            <div class="col-sm-6 card p-5">
+          <div class="">
+            <div class="card p-5">
+              <div class="form-group">
+                <label for="exampleInputEmail3">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter your name"
+                  v-model="username"
+                />
+              </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Phone Number</label>
                 <input
@@ -97,7 +106,7 @@ export default {
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Enter Phone Number"
-									v-model="phone_number"
+                  v-model="phone_number"
                 />
                 <small id="emailHelp" class="form-text text-muted"
                   >We'll never share your data with anyone else.</small
@@ -105,7 +114,11 @@ export default {
               </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Select semester</label>
-                <select class="form-control" v-model="semester" id="exampleFormControlSelect1">
+                <select
+                  class="form-control"
+                  v-model="semester"
+                  id="exampleFormControlSelect1"
+                >
                   <option>1</option>
                   <option>3</option>
                   <option>5</option>
@@ -113,12 +126,17 @@ export default {
                 </select>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect2">Select batch</label>
-                <select class="form-control" v-model="batch" id="exampleFormControlSelect2">
-                  <option>1</option>
-                  <option>2</option>
-                </select>
+                <label for="exampleInputEmail2">Batch</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail2"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter batch Eg CSB, CSA"
+                  v-model="batch"
+                />
               </div>
+
               <div class="form-group form-check">
                 <input
                   type="checkbox"
@@ -129,10 +147,16 @@ export default {
                   >Remember me</label
                 >
               </div>
-              <button @click="registerForEvent" type="submit" class="btn btn-primary">Submit</button>
+              <button
+                @click="registerForEvent"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
             </div>
           </div>
-          
+
           <br />
           {{ message }}
           <hr />
@@ -147,6 +171,7 @@ export default {
 .container {
   height: 100%;
   display: flex;
+  width: 600px;
   justify-content: center;
   align-items: center;
 }
