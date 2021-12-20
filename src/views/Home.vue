@@ -37,14 +37,14 @@ export default {
     <div class="col-sm-12 card bg-transparent border-0 about text-center">
       <div class="">
         <figure
-          class="bg-dark p-3 rounded text-light"
+          class="bg-dark p-3 py-5 rounded text-light"
           style="
             border-right: 0.5rem solid #a34e78;
             border-left: 0.5rem solid #a34e78;
           "
         >
-          <blockquote class="blockquote pb-2">
-            <p class="brand-2 brand-small">
+          <blockquote class="blockquote about-brand pb-2">
+            <p class="brand-2 brand-small ">
               Aloha, a frosty, congenial fiesta organized by the CSE Department
               of Adi Shankara Institute of Engineering and Technology, Kalady is
               the much awaited one-day extravaganza of the year and is all set
@@ -189,5 +189,9 @@ export default {
 
 .brand-small {
   font-size: 14px;
+}
+.about-brand{
+	padding-left: 10%;
+	padding-right: 10%;
 }
 </style>

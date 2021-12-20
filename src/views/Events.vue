@@ -38,7 +38,7 @@ export default {
         <h3 class="brand">{{ event.name }}</h3>
       </div>
       <hr />
-      <p class="brand-2 text-center">
+      <p class="brand-2 brand-small text-center">
         {{ event.description }}
         <br />
         <br />
