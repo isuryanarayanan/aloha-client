@@ -18,7 +18,7 @@ const store = new Vuex.Store({
     GET_EVENTS: function ({ getters, dispatch, commit }) {
       let xhr = new XMLHttpRequest();
       let promise = new Promise((resolve, reject) => {
-				xhr.open("GET", "https://alohaasiet.pythonanywhere.com/organizer/event");
+        xhr.open("GET", "https://aloha.herokuapp.com/organizer/event");
         xhr.setRequestHeader("Content-Type", "Application/json");
 
         xhr.onload = () => {
@@ -35,13 +35,33 @@ const store = new Vuex.Store({
       });
       return promise;
     },
-    GET_EVENT: function ({ getters, dispatch, commit }, id) {
+    GET_EVENTS_DETAILS: function ({ getters, dispatch, commit }, id) {
       let xhr = new XMLHttpRequest();
       let promise = new Promise((resolve, reject) => {
         xhr.open(
           "GET",
-					"https://alohaasiet.pythonanywhere.com/organizer/event/" + id + "/"
+					"https://aloha.herokuapp.com/organizer/event/registered/" + id + ""
         );
+        xhr.setRequestHeader("Content-Type", "Application/json");
+
+        xhr.onload = () => {
+          resolve(xhr);
+        };
+
+        xhr.onerror = () => {
+          reject(xhr);
+        };
+        xhr.send();
+      });
+      //promise.then((e) => {
+      //commit("set_events", JSON.parse(e.response));
+      //});
+      return promise;
+    },
+    GET_EVENT: function ({ getters, dispatch, commit }, id) {
+      let xhr = new XMLHttpRequest();
+      let promise = new Promise((resolve, reject) => {
+        xhr.open("GET", "https://aloha.herokuapp.com/organizer/event/" + id + "/");
         xhr.setRequestHeader("Content-Type", "Application/json");
 
         xhr.onload = () => {
@@ -61,7 +81,7 @@ const store = new Vuex.Store({
     LOGIN: function ({ getters, dispatch, commit }, params) {
       let xhr = new XMLHttpRequest();
       let promise = new Promise((resolve, reject) => {
-				xhr.open("POST", "https://alohaasiet.pythonanywhere.com/oauth/google/");
+        xhr.open("POST", "https://aloha.herokuapp.com/oauth/google/");
         xhr.setRequestHeader("Content-Type", "Application/json");
 
         xhr.onload = () => {
