@@ -100,7 +100,9 @@ export default {
           <h5 class="card-title">
             Time: {{ event.timing }} | venue: {{ event.venue }}
           </h5>
-          <p class="card-text">{{ event.description }}</p>
+          <p class="card-text">
+				<span v-html="event.description.replace(/(?:\r\n|\r|\n)/g, '<br />')"></span>
+</p>
 
           <div class="">
             <div class="card p-5">

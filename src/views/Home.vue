@@ -81,7 +81,7 @@ export default {
         </div>
         <hr />
         <p class="brand-2 brand-small text-center">
-          {{ event.short_description }}
+				<span v-html="event.short_description.replace(/(?:\r\n|\r|\n)/g, '<br />')"></span>
           <br />
           <br />
           <a class="btn brand-2 btn-primary register-btn">
