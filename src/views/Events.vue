@@ -62,7 +62,8 @@ export default {
 }
 .event-card {
   width: 100%;
-}.brand-small {
+}
+.brand-small {
   font-size: 14px;
 }
 </style>

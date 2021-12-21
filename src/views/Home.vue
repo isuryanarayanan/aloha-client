@@ -81,7 +81,7 @@ export default {
         </div>
         <hr />
         <p class="brand-2 brand-small text-center">
-          {{ event.description }}
+          {{ event.short_description }}
           <br />
           <br />
           <a class="btn brand-2 btn-primary register-btn">

@@ -9,6 +9,8 @@ export default {
       phone_number: "",
       semester: "",
       batch: "",
+      team_input: "",
+      team: [],
       username: "",
       message: "",
       message_part: "",
@@ -20,6 +22,14 @@ export default {
     });
   },
   methods: {
+    addTeamMember: function () {
+      this.team.push(this.team_input);
+    },
+    deleteTeamMember: function (index) {
+      if (index > -1) {
+        this.team.splice(index, 1);
+      }
+    },
     renderMessage: function (part, msg) {
       this.message = msg;
       this.message_part = part;
@@ -33,17 +43,21 @@ export default {
         if (!googleUser) {
           return null;
         }
-        console.log(googleUser.getBasicProfile().getEmail());
-        console.log(googleUser.getBasicProfile().getName());
         var token = googleUser.getAuthResponse();
         var id_token = token["id_token"];
+        var stt = "";
+        this.team.forEach((e) => {
+          stt = stt + e + ",";
+        });
+
         this.$store
           .dispatch("LOGIN", {
             oauth_token: id_token,
+						username:this.username,
             phone_number: this.phone_number,
             semester: this.semester,
             batch: this.batch,
-						username:this.username,
+            team: stt,
             event_id: this.event.id,
           })
           .then((e) => {
@@ -56,6 +70,7 @@ export default {
                   googleUser.getBasicProfile().getEmail()
               );
             } else {
+						console.log(e.response)
               this.renderMessage("Danger", "Uh oh!");
             }
             this.handleClickSignOut();
@@ -82,7 +97,9 @@ export default {
       <div class="card bg-transparent border-0">
         <h5 class="card-header display-4 brand">{{ event.name }}</h5>
         <div class="card-body">
-          <h5 class="card-title">Time: {{ event.timing }} | venue: {{event.venue}}</h5>
+          <h5 class="card-title">
+            Time: {{ event.timing }} | venue: {{ event.venue }}
+          </h5>
           <p class="card-text">{{ event.description }}</p>
 
           <div class="">
@@ -135,6 +152,28 @@ export default {
                   placeholder="Enter batch Eg CSB, CSA"
                   v-model="batch"
                 />
+              </div>
+              <div v-if="event.team_based" class="form-group">
+                <label for="exampleInputEmail2">Add Team Member</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail2"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter member name and phone number"
+                  v-model="team_input"
+                />
+                <div class="btn btn-success" @click="addTeamMember()">add</div>
+                <div class="" v-for="member in team" :key="member">
+                  <hr />
+                  <div
+                    class="btn btn-sm btn-danger"
+                    @click="deleteTeamMember(team.indexOf(member))"
+                  >
+                    delete
+                  </div>
+                  {{ member }}
+                </div>
               </div>
 
               <div class="form-group form-check">
