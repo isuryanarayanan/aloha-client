@@ -18,10 +18,7 @@ const store = new Vuex.Store({
     GET_EVENTS: function ({ getters, dispatch, commit }) {
       let xhr = new XMLHttpRequest();
       let promise = new Promise((resolve, reject) => {
-        xhr.open(
-          "GET",
-          "https://alohaasiet.pythonanywhere.com/organizer/event"
-        );
+				xhr.open("GET", "https://alohaasiet.pythonanywhere.com/organizer/event");
         xhr.setRequestHeader("Content-Type", "Application/json");
 
         xhr.onload = () => {
@@ -43,7 +40,7 @@ const store = new Vuex.Store({
       let promise = new Promise((resolve, reject) => {
         xhr.open(
           "GET",
-          "https://alohaasiet.pythonanywhere.com/organizer/event/" + id + "/"
+					"https://alohaasiet.pythonanywhere.com/organizer/event/" + id + "/"
         );
         xhr.setRequestHeader("Content-Type", "Application/json");
 
@@ -64,7 +61,7 @@ const store = new Vuex.Store({
     LOGIN: function ({ getters, dispatch, commit }, params) {
       let xhr = new XMLHttpRequest();
       let promise = new Promise((resolve, reject) => {
-        xhr.open("POST", "https://alohaasiet.pythonanywhere.com/oauth/google/");
+				xhr.open("POST", "https://alohaasiet.pythonanywhere.com/oauth/google/");
         xhr.setRequestHeader("Content-Type", "Application/json");
 
         xhr.onload = () => {

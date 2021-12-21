@@ -46,14 +46,18 @@ export default {
         var token = googleUser.getAuthResponse();
         var id_token = token["id_token"];
         var stt = "";
-        this.team.forEach((e) => {
-          stt = stt + e + ",";
-        });
+        if (this.team.length == 0) {
+          stt = "none";
+        } else {
+          this.team.forEach((e) => {
+            stt = stt + e + ",";
+          });
+        }
 
         this.$store
           .dispatch("LOGIN", {
             oauth_token: id_token,
-						username:this.username,
+            username: this.username,
             phone_number: this.phone_number,
             semester: this.semester,
             batch: this.batch,
@@ -70,7 +74,7 @@ export default {
                   googleUser.getBasicProfile().getEmail()
               );
             } else {
-						console.log(e.response)
+              console.log(e.response);
               this.renderMessage("Danger", "Uh oh!");
             }
             this.handleClickSignOut();
@@ -101,8 +105,10 @@ export default {
             Time: {{ event.timing }} | venue: {{ event.venue }}
           </h5>
           <p class="card-text">
-				<span v-html="event.description.replace(/(?:\r\n|\r|\n)/g, '<br />')"></span>
-</p>
+            <span
+              v-html="event.description.replace(/(?:\r\n|\r|\n)/g, '<br />')"
+            ></span>
+          </p>
 
           <div class="">
             <div class="card p-5">
